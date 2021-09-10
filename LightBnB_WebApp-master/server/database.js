@@ -156,6 +156,12 @@ const addProperty = function (property) {
     number_of_bedrooms) 
   VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING *;`;
   string = Object.keys(property);
+  return pool.query(question, string).then(res => {
+    return res.rows
+  })
+  .catch(err => {
+    return err.message
+  })
 };
 
 export {
